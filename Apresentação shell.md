@@ -9,3 +9,7 @@ Simulação em gifs
 https://www.toptal.com/developers/sorting-algorithms
 
 http://nicholasandre.com.br/sorting/
+
+
+Video simulando o shell Sort
+https://www.youtube.com/watch?v=M9YCh-ZeC7Y
