@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
    
 #ifdef WIN32 
   #define limpa_tela system("cls") 
