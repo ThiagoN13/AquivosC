@@ -12,7 +12,7 @@
    
 main(){
   //declaração de variáveis
-  int nPos=0, nAux=0, i, nTrocas;
+  int nPos=0, nAux=0, i, nTrocas = 0;
    
   //Quantidade de casas do vetor
   while((nPos<=0)||(nPos>100)){
@@ -22,14 +22,14 @@ main(){
    
   //criando o vetor
   int nVetor[nPos], nOrig[nPos], nOpc=-1;
-  char op;
+  int op;
   
   //estrutura de decisão para preenchimento do vetor
-  printf("\nDeseja preencher o vetor manualmente? (S/N) ");
-  scanf("%s",&op);
+  printf("\nDeseja preencher o vetor manualmente? (1/0) ");
+  scanf("%d",&op);
 
   
-  if(op=='S' || op=='s') {
+  if(op == 1) {
 	  //preenchendo os dados do vetor
 	  for(nAux = 0 ; nAux <= nPos-1 ; nAux++){
 	    printf("\nInsira o numero %d: ",nAux+1);
@@ -41,16 +41,17 @@ main(){
   else{
 	  //preenchendo o vetor com valores aleatorios
 	  for(i = 0 ; i <= nPos-1 ; i++){
-	  	nVetor[i] = rand();
+	  	nVetor[i] = rand() % 100;
 	  	nOrig[i] = nVetor[i];
 	  }
   }
    
   //Limpando a tela e pegando a opção
   limpa_tela;
-  while((nOpc<=0) || (nOpc>=2)){
+  while((nOpc<=0) || (nOpc>=3)){
     printf("\n > Menu:");
     printf("\n  1. Shell Sort");
+    printf("\n  2. Insertion Sort");
     printf("\n > Resposta: ");
     scanf("%d",&nOpc);
   }
@@ -71,7 +72,7 @@ main(){
       for(nAtual = nGap; nAtual < nPos; nAtual++) {
         //imprimindo os valores
         for(nAux=0;nAux<=nPos-1;nAux++){
-          printf("- [%d] -",nVetor[nAux]);
+          printf(" [%d] -",nVetor[nAux]);
           espera;
         }
               
@@ -90,6 +91,24 @@ main(){
       }
     }
   }
+
+	if(nOpc == 2){
+		int i, j, atual;
+
+			for (i = 1; i < nPos; i++){
+				atual = nVetor[i];
+				j = i - 1;
+
+				while ((j >= 0) && (atual < nVetor[j])){
+					nVetor[j + 1] = nVetor[j];
+		            j = j - 1;
+		            ++nTrocas;
+				}
+		    
+				nVetor[j + 1] = atual;
+			}
+	}
+
    
    
   //Resultado - Vetor Original
@@ -110,4 +129,5 @@ main(){
   getchar();
   printf("\n\nPressione -Enter- para finalizar!\n\n");
   getchar();
+  limpa_tela;
 }
